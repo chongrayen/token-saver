@@ -56,6 +56,11 @@ def index():
     return send_from_directory(FRONTEND_DIR, "index.html")
 
 
+@app.get("/health")
+def health():
+    return jsonify({"status": "ok"})
+
+
 @app.get("/<path:path>")
 def static_proxy(path: str):
     target = FRONTEND_DIR / path
