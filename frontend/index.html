@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prompt Slimmer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <h1>Prompt Slimmer</h1>
+        <p>Paste your prompt, press shorten, and copy the lean version to save tokens.</p>
+      </header>
+
+      <main>
+        <section class="card">
+          <label for="inputText">Your prompt</label>
+          <textarea id="inputText" placeholder="Paste or type your prompt here"></textarea>
+
+          <div class="controls">
+            <div class="control">
+              <label for="ratio">Summary ratio (<span id="ratioValue">35</span>%)</label>
+              <input type="range" id="ratio" min="5" max="100" value="35" />
+            </div>
+            <div class="control-inline">
+              <label for="maxSentences">Max sentences</label>
+              <input type="number" id="maxSentences" min="1" placeholder="auto" />
+            </div>
+            <div class="control-inline">
+              <label for="maxChars">Max characters</label>
+              <input type="number" id="maxChars" min="40" placeholder="auto" />
+            </div>
+            <label class="checkbox">
+              <input type="checkbox" id="shorthand" checked />
+              Include shorthand version
+            </label>
+          </div>
+
+          <button id="shortenBtn">Shorten prompt</button>
+        </section>
+
+        <section class="card output-card">
+          <div class="output-header">
+            <h2>Output</h2>
+            <button id="copyBtn" disabled>Copy summary</button>
+          </div>
+          <div id="output" class="output-text">Run the summarizer to see results.</div>
+          <div id="shorthandBlock" class="output-text hidden"></div>
+          <div id="stats" class="stats hidden"></div>
+        </section>
+      </main>
+
+      <footer>
+        <small>Built for Rayen · Runs locally via Flask + vanilla JS. Ready for GitHub deployment.</small>
+      </footer>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
